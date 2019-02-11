@@ -1,18 +1,32 @@
+#imports
 import os
 import nltk
 
+
+#helper functions
 def extract_np(present):
     for subtree in present.subtrees():
         if subtree.label() == 'NP' or 'PP':
             yield ' '.join(word for word , tag in subtree.leaves())
 
+
 grammar = ('''
     NP: {<JJ>*<JJS>*<JJR>*<NN>*<NNS>*<NNPS>*<NNP>*} # NP
     PP: {<NP>*<IN>+<NP>*} # PP
     ''') # defining grammar for NP
-cp = nltk.RegexpParser(grammar)
+
+
+cp = nltk.RegexpParser(grammar) #creating parser
 sen = "loss of hair , hair loss"
-token = nltk.word_tokenize(sen)
-tagged = nltk.pos_tag(token)
-parsed_sent = cp.parse(tagged)
+
+
+token = nltk.word_tokenize(sen) #tokenizing the words
+
+
+tagged = nltk.pos_tag(token) #pos tagging
+
+
+parsed_sent = cp.parse(tagged) #parsing the tagged words to parser
+
+
 print(extract_np(parsed_sent))
