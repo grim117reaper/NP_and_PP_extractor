@@ -1,0 +1,17 @@
+sentence = hair loss
+
+NP : hair loss
+--------------------------------
+sentence = loss of hair
+
+NP : loss
+NP : hair
+--------------------------------
+sentence = broken glass
+
+NP : broken glass
+--------------------------------
+sentence = chloroform
+
+NP : chloroform
+--------------------------------
